@@ -34,15 +34,7 @@ const authCodeSchema: Schema<AuthCodeDocument> = new Schema<AuthCodeDocument>(
   { timestamps: true }
 );
 
-/**
- * (1.04) TODO:
- * - Add a line of code here that will elete every document in the "AuthCode"
- * collection after 5 minutes (60 seconds * 5).
- * - To be very clear, the only way you're going to figure this out is by
- * Googling around for the answer. The solution is one line.
- * - Once you find something, add the code to this document and include a link
- * to the code you found in a comment.
- * */
+authCodeSchema.index({ createdAt: 1 }, { expireAfterSeconds: 60 * 5 });
 
 authCodeSchema.index({ createdAt: 1 }, { expireAfterSeconds: 60 * 5 });
 
